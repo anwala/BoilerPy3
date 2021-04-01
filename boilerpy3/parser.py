@@ -492,7 +492,8 @@ class BoilerpipeBaseParser:
         self.last_event = self.EVENT_END_TAG
         self.last_end_tag = name
         try:
-            self.label_stacks.pop()
+            if( len(self.label_stacks) != 0 ):
+                self.label_stacks.pop()
         except IndexError:
             if self.raise_on_failure:
                 raise
